@@ -1,0 +1,18 @@
+import streamlit as st
+import trimesh
+import os
+
+st.title('Mesh Segmentation Tool')
+
+uploaded_file = st.file_uploader("Choose a PLY file", type="ply")
+if uploaded_file is not None:
+    # Load the mesh
+    mesh = trimesh.load_mesh(uploaded_file)
+
+    # [Insert the code to process the mesh here...]
+
+    # Save the processed mesh and provide a download link
+    output_filename = "processed.ply"
+    mesh.export(output_filename)
+    st.write('Download the processed file:')
+    st.markdown(f'[Download processed.ply](/{output_filename})')
